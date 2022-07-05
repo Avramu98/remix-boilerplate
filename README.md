@@ -1,6 +1,14 @@
-# Welcome to Remix!
+## MongoDB setup
 
-- [Remix Docs](https://remix.run/docs)
+```coffeescript
+"https://www.prisma.io/blog/fullstack-remix-prisma-mongodb-1-7D0BfTXBmB6r#set-up-tailwindcss"
+```
+
+## Prisma
+
+```sh
+npx prisma studio
+```
 
 ## Deployment
 
@@ -28,6 +36,8 @@ Afterwards, start the Remix development server like so:
 ```sh
 npm run dev
 ```
+
+
 
 Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
 
