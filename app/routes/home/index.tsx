@@ -10,7 +10,7 @@ export const loader: ActionFunction = async ({ request }) => {
   return json({ userId, blogs });
 };
 
-export default function TestingHome() {
+const TestingHome = () => {
   const { blogs } = useLoaderData();
   const navigate = useNavigate();
 
@@ -43,4 +43,6 @@ export default function TestingHome() {
       })}
     </div>
   );
-}
+};
+
+export default TestingHome;

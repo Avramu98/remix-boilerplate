@@ -24,7 +24,7 @@ export const action: ActionFunction = async ({ request }) => {
   return redirect('/home');
 };
 
-export default function CreateBlog() {
+const CreateBlog = () => {
   const [formData, setFormData] = useState({
     title: '',
     message: '',
@@ -61,4 +61,6 @@ export default function CreateBlog() {
       </form>
     </Modal>
   );
-}
+};
+
+export default CreateBlog;

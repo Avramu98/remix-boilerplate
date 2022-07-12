@@ -12,7 +12,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   return null;
 };
 
-export default function Home() {
+const Home = () => {
   const { user } = useLoaderData();
   const { firstName, lastName } = user.profile;
   return (
@@ -34,4 +34,6 @@ export default function Home() {
       <Outlet />
     </Layout>
   );
-}
+};
+
+export default Home;

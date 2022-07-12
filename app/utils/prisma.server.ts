@@ -1,3 +1,6 @@
+/* eslint-disable no-var */
+/* eslint-disable vars-on-top */
+/* eslint-disable import/no-mutable-exports */
 import { PrismaClient } from '@prisma/client';
 
 let prisma: PrismaClient;

@@ -63,7 +63,7 @@ export const action: ActionFunction = async ({ request }) => {
   }
 };
 
-export default function Login() {
+const Login = () => {
   const actionData = useActionData();
   const firstLoad = useRef(true);
   const [action, setAction] = useState('login');
@@ -112,6 +112,7 @@ export default function Login() {
       <div className="h-full justify-center items-center flex flex-col gap-y-4">
         {/* Form Switcher Button */}
         <button
+          type="button"
           onClick={() => setAction(action === 'login' ? 'register' : 'login')}
           className="absolute top-8 right-8 rounded-xl bg-yellow-300 font-semibold text-blue-600 px-3 py-2 transition duration-300 ease-in-out hover:bg-yellow-400 hover:-translate-y-1"
         >
@@ -177,4 +178,6 @@ export default function Login() {
       </div>
     </Layout>
   );
-}
+};
+
+export default Login;

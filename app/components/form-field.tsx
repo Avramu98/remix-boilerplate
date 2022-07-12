@@ -9,14 +9,14 @@ interface FormFieldProps {
   error?: string;
 }
 
-export function FormField({
+export const FormField = ({
   htmlFor,
   label,
   type = 'text',
   value,
   onChange = () => {},
   error = '',
-}: FormFieldProps) {
+}: FormFieldProps) => {
   const [errorText, setErrorText] = useState(error);
 
   useEffect(() => {
@@ -44,4 +44,4 @@ export function FormField({
       </div>
     </>
   );
-}
+};
