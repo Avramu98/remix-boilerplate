@@ -1,18 +1,27 @@
 import type { LoaderFunction } from '@remix-run/node';
-import { requireUserId } from '~/utils/auth.server';
+import { getUser } from '~/utils/auth.server';
 import { Layout } from '~/components/layout';
+import { Outlet, useLoaderData } from '@remix-run/react';
+import { json } from '@remix-run/node';
 
 export const loader: LoaderFunction = async ({ request, params }) => {
-  await requireUserId(request);
+  const user = await getUser(request);
+  if (user) {
+    return json({ user });
+  }
   return null;
 };
 
 export default function Home() {
+  const { user } = useLoaderData();
+  const { firstName, lastName } = user.profile;
   return (
     <Layout>
-      {/* // <Outlet /> */}
+      <div className="p-6 bg-gray-300 flex md:justify-between lg:justify-between text-center justify-center  content-center flex-wrap items-center gap-3">
+        <p>
+          Logged in as <br /> {firstName} {lastName}
+        </p>
 
-      <div className="text-center p-6 bg-gray-300">
         <form action="/logout" method="post">
           <button
             type="submit"
@@ -22,6 +31,7 @@ export default function Home() {
           </button>
         </form>
       </div>
+      <Outlet />
     </Layout>
   );
 }

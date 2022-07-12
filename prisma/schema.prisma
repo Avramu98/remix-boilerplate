@@ -17,9 +17,20 @@ model User {
   email     String   @unique
   password  String
   profile   Profile
+  authoredBlogs Blog[] @relation("AuthoredBlogs")
+}
+
+model Blog {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  title     String
+  message   String
+  author    User     @relation(references: [id], fields: [authorId], "AuthoredBlogs")
+  authorId  String   @db.ObjectId
 }
 
 type Profile {
   firstName String
   lastName  String
 }
+
