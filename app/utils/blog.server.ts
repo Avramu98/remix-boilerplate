@@ -14,6 +14,18 @@ export const createBlog = async (title: string, message: string, userId: string)
   });
 };
 
+export const editBlog = async (blogId: string, title?: string, message?: string) => {
+  await prisma.blog.update({
+    data: {
+      title,
+      message,
+    },
+    where: {
+      id: blogId,
+    },
+  });
+};
+
 export const getRecentBlogs = async () =>
   await prisma.blog.findMany({
     take: 10,
@@ -31,3 +43,18 @@ export const getRecentBlogs = async () =>
       },
     },
   });
+
+export const getBlogById = async (blogId: string) =>
+  await prisma.blog.findUnique({
+    where: {
+      id: blogId,
+    },
+  });
+
+export const deleteBlog = async (blogId: string) => {
+  await prisma.blog.delete({
+    where: {
+      id: blogId,
+    },
+  });
+};
