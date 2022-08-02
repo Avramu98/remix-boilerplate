@@ -2,8 +2,8 @@ import { FormField } from '~/components/form-field';
 import { useState } from 'react';
 import type { ActionFunction } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
-import { requireUserId } from '~/utils/auth.server';
-import { createBlog } from '~/utils/blog.server';
+import { requireUserId } from '~/utils/example/auth.server';
+import { createBlog } from '~/utils/example/blog.server';
 import { Modal } from '~/components/modal';
 
 export const action: ActionFunction = async ({ request }) => {
@@ -24,7 +24,7 @@ export const action: ActionFunction = async ({ request }) => {
   return redirect('/home');
 };
 
-const CreateBlog = () => {
+const EditBlog = () => {
   const [formData, setFormData] = useState({
     title: '',
     message: '',
@@ -56,11 +56,11 @@ const CreateBlog = () => {
           type="submit"
           className="rounded-xl mt-2 bg-yellow-300 px-3 py-2 text-blue-600 font-semibold transition duration-300 ease-in-out hover:bg-yellow-400 hover:-translate-y-1"
         >
-          Create Blog
+          Delete
         </button>
       </form>
     </Modal>
   );
 };
 
-export default CreateBlog;
+export default EditBlog;

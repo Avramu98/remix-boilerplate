@@ -1,7 +1,7 @@
 import type { ActionFunction, LoaderFunction } from '@remix-run/node';
 import { redirect, json } from '@remix-run/node';
-import { requireUserId } from '~/utils/auth.server';
-import { deleteBlog, editBlog, getRecentBlogs } from '~/utils/blog.server';
+import { requireUserId } from '~/utils/example/auth.server';
+import { deleteBlog, editBlog, getRecentBlogs } from '~/utils/example/blog.server';
 import { Form, useLoaderData, useNavigate } from '@remix-run/react';
 import { useState } from 'react';
 import { FormField } from '~/components/form-field';
@@ -14,12 +14,12 @@ export const action: ActionFunction = async ({ request }) => {
 
   if (action === 'delete') {
     await deleteBlog(blogId);
-    return redirect('/home');
+    return redirect('/example');
   }
 
   if (action === 'update') {
     await editBlog(blogId, title);
-    return redirect('/home');
+    return redirect('/example');
   }
 };
 
@@ -37,7 +37,7 @@ const TestingHome = () => {
   return (
     <div className="flex flex-col items-center content-center gap-4">
       <button
-        onClick={() => navigate('/home/create-blog')}
+        onClick={() => navigate('/example/create-blog')}
         type="submit"
         className="rounded-xl mt-2 bg-yellow-300 px-3 py-2 text-blue-600 font-semibold transition duration-300 ease-in-out hover:bg-yellow-400 hover:-translate-y-1"
       >
